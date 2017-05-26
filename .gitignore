@@ -1,0 +1,3 @@
+node_modules
+dist/v*
+npm-debug.log
