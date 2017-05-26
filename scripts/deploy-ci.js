@@ -43,7 +43,7 @@ const createArtifactForDeployment = () => {
           throw new Error(err);
         });
         archive.pipe(output);
-        archive.file('dist/rs-glue.min.js', { name: 'rs-glue.js' });
+        archive.file('dist/jackson-core.min.js', { name: 'jackson-core.js' });
         archive.finalize();
       })
       .catch((err) => {
@@ -61,7 +61,7 @@ const deployLambdaFunctionToTest = () => {
         const lambda = new AWS.Lambda();
 
         const updateFunctionCodeConfig = {
-          FunctionName: 'rs-glue',
+          FunctionName: 'jackson-core',
           Publish: true,
           ZipFile: fs.readFileSync(`${__dirname}/../dist/${artifactVersion}.zip`),
         };
