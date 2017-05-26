@@ -1,5 +1,3 @@
 exports.handler = (event, context, callback) => {
-  console.log(event);
-  console.log(context);
-  callback(null, { hi: event });  // Echo back the first key value
+  callback(null, { hi: 'from jackson-core' });  // Echo back the first key value
 };
