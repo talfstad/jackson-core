@@ -1,25 +1,15 @@
 const webpack = require('webpack');
 const path = require('path');
-const fs = require('fs');
 
 module.exports = {
-  context: path.join(__dirname, 'lambdas'),
-  entry: fs.readdirSync(path.join(__dirname, './lambdas'))
-         .filter(filename => /\.js$/.test(filename))
-         .map((filename) => {
-           const entry = {};
-           entry[filename.replace('.js', '')] = path.join(
-             __dirname,
-             './lambdas/',
-             filename);
-           return entry;
-         })
-         .reduce((finalObject, entry) => Object.assign(finalObject, entry), {}),
+  context: path.join(__dirname, 'src'),
+  entry: './index.js',
   target: 'node',
   module: {
     rules: [
       {
         test: /\.js$/,
+        exclude: /node_modules/,
         use: [
           {
             loader: 'babel-loader',
@@ -33,9 +23,9 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, '/dist/'),
-    library: '[name]',
+    library: 'index',
     libraryTarget: 'commonjs2',
-    filename: '[name].min.js',
+    filename: 'index.min.js',
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
