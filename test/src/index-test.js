@@ -1,11 +1,9 @@
 // import { expect } from 'chai';
-import {
-  processRequest,
-} from '../../src';
+import JacksonCore from '../../src';
 
 describe('Jackson Core -> index.js', () => {
   it('processRequest runs', () => {
-    processRequest({})
+    JacksonCore.processRequest({})
       .then(() => {
         console.log('request is processed');
       })
