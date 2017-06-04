@@ -4,10 +4,11 @@
   "description": "Find more information on Jackson Core here: https://github.com/Buildcave/jackson-core",
   "main": "dist/index.min.js",
   "scripts": {
+    "build:watch": "webpack-dev-server 'mocha-loader!./test/*' --hot --inline --output-filename test.js && open http://localhost:8080/test",
     "precommit": "npm run lint && npm run test",
     "commitmsg": "validate-commit-msg $GIT_PARAMS",
     "lint": "eslint .",
-    "test": "mocha --compilers js:babel-core/register --recursive ./test",
+    "test": "mocha-webpack --recursive --webpack-config webpack.config.js test",
     "test:watch": "npm run test -- --watch"
   },
   "repository": {
@@ -36,6 +37,7 @@
     "husky": "^0.13.3",
     "json-loader": "^0.5.4",
     "mocha": "^3.4.1",
+    "mocha-webpack": "^0.7.0",
     "path": "^0.12.7",
     "rimraf": "^2.6.1",
     "validate-commit-msg": "^2.12.1",
