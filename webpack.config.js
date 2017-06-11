@@ -18,7 +18,12 @@ module.exports = {
           },
         ],
       },
+      { test: /\.json$/, loader: 'json-loader' },
     ],
+  },
+  externals: {
+    mongoose: 'mongoose',
+    redis: 'redis',
   },
   output: {
     path: path.join(__dirname, '/dist/'),

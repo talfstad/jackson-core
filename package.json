@@ -44,6 +44,7 @@
     "webpack": "^2.6.0"
   },
   "dependencies": {
+    "mongoose": "^4.10.5",
     "redis": "^2.7.1"
   }
 }

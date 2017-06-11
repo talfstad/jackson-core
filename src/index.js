@@ -2,16 +2,15 @@ import RequestQualifier from '../lib/request-qualifier';
 
 class JacksonCore {
   static processRequest(inputs) {
-    const promise = new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       new RequestQualifier().validate(inputs)
         .then(() => {
           resolve();
         })
-        .catch(() => {
-          reject();
+        .catch((err) => {
+          reject(err);
         });
     });
-    return promise;
   }
 }
 

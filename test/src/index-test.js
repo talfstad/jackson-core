@@ -55,7 +55,7 @@ describe('Jackson Core -> index.js', () => {
       });
   });
 
-  it('succeeds if given correct input', (done) => {
+  it.skip('succeeds if given correct input and domain is not registered', (done) => {
     JacksonCore.processRequest({ ...validInputs })
       .then(() => {
         done();
@@ -67,6 +67,21 @@ describe('Jackson Core -> index.js', () => {
         } catch (e) {
           done(e);
         }
+      });
+  });
+
+  it.skip('fails if domain is registered and has correct inputs', (done) => {
+    JacksonCore.processRequest({ ...validInputs })
+      .then(() => {
+        try {
+          assert.fail(true, false, 'Given the correct input processRequest is failing');
+          done();
+        } catch (e) {
+          done(e);
+        }
+      })
+      .catch(() => {
+        done();
       });
   });
 });
