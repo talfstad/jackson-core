@@ -71,7 +71,8 @@ describe('Jackson Core -> index.js', () => {
   });
 
   it.skip('fails if domain is registered and has correct inputs', (done) => {
-    JacksonCore.processRequest({ ...validInputs })
+    // Use a domain that is registered in mongo
+    JacksonCore.processRequest({ ...validInputs, url: 'test-whitelisted-domain.com' })
       .then(() => {
         try {
           assert.fail(true, false, 'Given the correct input processRequest is failing');
